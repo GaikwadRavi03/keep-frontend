@@ -1,7 +1,7 @@
 server {
     listen 80;
     listen [::]:80;
-    root /home/ubuntu/frontend/keep-frontend/build;
+    root /home/ubuntu/frontend/build;
     location / {
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
