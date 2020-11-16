@@ -8,17 +8,17 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                sudo cp keep-frontend /home/ubuntu
-                cd /home/ubuntu
+                echo ===> package creation stage
                 '''
             }
         }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-frontend
-                sudo npm install
-                sudo npm run build
+                cd /var/lib/jenkins/workspace/keep-frontend-pipeline
+                npm install
+                npm run build
+                echo ===> Build stage
                 '''
             }
         }
@@ -30,9 +30,9 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-frontend
-                sudo pm2 serve build 3000
-                sudo service nginx stop && sudo service nginx start
+                cd /var/lib/jenkins/workspace/keep-frontend-pipeline
+                pm2 serve build 3000
+                echo ===> deploy stage
                 '''
             }
         }
