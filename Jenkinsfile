@@ -8,6 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-frontend-pipeline ubuntu@13.232.191.197:/home/ubuntu/
                 echo ===> package creation stage
                 '''
             }
@@ -15,7 +16,8 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/keep-frontend-pipeline
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197
+                cd /home/ubuntu/keep-frontend-pipeline
                 npm install
                 npm run build
                 echo ===> Build stage
@@ -30,7 +32,8 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/keep-frontend-pipeline
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197
+                cd /home/ubuntu/keep-frontend-pipeline
                 pm2 serve build 3000
                 echo ===> deploy stage
                 '''
