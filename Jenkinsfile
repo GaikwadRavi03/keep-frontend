@@ -16,7 +16,8 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'mv /home/ubuntu/keep-frontend-pipeline keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'rm -rf /home/ubuntu/keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'mv /home/ubuntu/keep-frontend-pipeline /home/ubuntu/keep-frontend'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'bash /home/ubuntu/buildJenkis.sh'
                 echo ===> Build stage
                 '''
