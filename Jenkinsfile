@@ -16,6 +16,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'ls'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186
                 cd /home/ubuntu/
                 rm -rf keep-frontend
