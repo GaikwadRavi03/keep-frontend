@@ -19,7 +19,7 @@ pipeline {
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186
                 cd /home/ubuntu/
                 rm -rf keep-frontend
-                touch raviFrontEnd.txt
+                sudo touch raviFrontEnd.txt
                 #mv keep-frontend-pipeline keep-frontend
                 #cd keep-frontend
                 #npm install
