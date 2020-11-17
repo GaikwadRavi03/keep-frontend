@@ -16,15 +16,8 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'ls'
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186
-                cd /home/ubuntu/
-                rm -rf keep-frontend
-                touch raviFrontEnd.txt
-                #mv keep-frontend-pipeline keep-frontend
-                #cd keep-frontend
-                #npm install
-                #npm run build
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'mv /home/ubuntu/keep-frontend-pipeline keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'bash /home/ubuntu/buildJenkis.sh'
                 echo ===> Build stage
                 '''
             }
@@ -37,10 +30,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186
-                cd /home/ubuntu/keep-frontend
-                pm2 kill
-                pm2 serve build 3000
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'bash /home/ubuntu/deployJenkins.sh'
                 echo ===> deploy stage
                 '''
             }
