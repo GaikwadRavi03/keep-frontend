@@ -7,8 +7,7 @@ pipeline {
         stage('package creation') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/Demo
-                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' home/ubuntu/Demo/workspace/keep-frontend-pipeline ubuntu@13.232.87.186:/home/ubuntu/
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /home/ubuntu/Demo/workspace/keep-frontend-pipeline ubuntu@13.232.87.186:/home/ubuntu/
                 echo ===> package creation on frontend server
                 '''
             }
