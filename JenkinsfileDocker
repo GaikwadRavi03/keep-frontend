@@ -15,9 +15,9 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash                
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-frontend'
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv home/ubuntu/keep-frontend-pipeline /keep-frontend'
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildFront.sh'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv home/ubuntu/keep-frontend-pipeline /keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildFront.sh'
                 echo ===> Build stage
                 '''
             }
