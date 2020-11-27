@@ -8,7 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'echo "++++++++++ Hello Ravi +++++++++++++"'
-                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-frontend-pipeline ubuntu@65.0.6.140:/
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-frontend-pipeline ubuntu@65.0.6.140:/home/ubuntu/
                 echo ===> package creation on frontend server
                 '''
             }
@@ -16,9 +16,9 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-frontend'
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /keep-frontend-pipeline /keep-frontend'
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildFront.sh'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-frontend'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /keep-frontend-pipeline /keep-frontend'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildFront.sh'
                 echo ===> Build stage
                 '''
             }
