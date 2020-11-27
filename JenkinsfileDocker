@@ -7,6 +7,7 @@ pipeline {
         stage('package creation') { 
             steps { 
                 sh ''' #!/bin/bash
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'echo "++++++++++ Hello Ravi +++++++++++++"'
                 rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-frontend-pipeline ubuntu@65.0.6.140:/
                 echo ===> package creation on frontend server
                 '''
