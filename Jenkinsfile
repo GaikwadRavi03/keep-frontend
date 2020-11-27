@@ -18,7 +18,7 @@ pipeline {
                 sh ''' #!/bin/bash
                 ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'sudo rm -rf /home/ubuntu/keep-frontend'
                 ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'mv /home/ubuntu/docker-web /home/ubuntu/keep-frontend'
-                ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'bash /home/ubuntu/buildJenkis.sh'
+                #ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'bash /home/ubuntu/buildJenkis.sh'
                 ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'bash /home/ubuntu/dockerBuild.sh'
                 echo ===> Build stage
                 '''
@@ -32,7 +32,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'bash /home/ubuntu/deployJenkins.sh'
+                #ssh -i /my-mumbai-key.pem ubuntu@13.126.93.57 'bash /home/ubuntu/deployJenkins.sh'
                 echo ===> deploy stage
                 '''
             }
