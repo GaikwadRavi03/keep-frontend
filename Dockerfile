@@ -10,7 +10,7 @@ ENV PATH /app-f/node_modules/.bin:$PATH
 # install app dependencies
 COPY package.json package-lock.json ./
 RUN npm install
-#RUN npm run build
+RUN npm run build
 
 # add app
 COPY . ./
@@ -19,4 +19,4 @@ RUN npm run build
 
 EXPOSE 3000
 # start app
-CMD ["npm", "start"]
+#CMD ["npm", "start"]
