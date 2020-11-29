@@ -22,6 +22,7 @@ pipeline {
             steps {
                 sh ''' #!/bin/bash
                 ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /home/ubuntu/myScripts/deployFrontend.sh'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /home/ubuntu/myScripts/buildFinal.sh'
                 echo ===> deploy stage
                 '''
             }
