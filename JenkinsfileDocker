@@ -8,7 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /home/ubuntu/myScripts/deleteFront.sh'
-                 '/home/ubuntu/myCommands/buildFrontend.sh'
+                '/home/ubuntu/myCommands/buildFrontend.sh'
                 echo ===> Build stage
                 '''
             }
