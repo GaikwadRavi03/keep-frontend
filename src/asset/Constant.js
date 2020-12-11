@@ -1,1 +1,1 @@
-export default URL = 'http://65.0.6.140:4000/';
+export default URL = 'http://keep-backend-service:4000/';
