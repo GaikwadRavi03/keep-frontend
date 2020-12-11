@@ -7,4 +7,16 @@ WORKDIR /app-f
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app-f/node_modules/.bin:$PATH
 
-ENTRYPOINT ["/bin/bash", "-c", "npm install; npm run build; exec \"${@:0}\";"]
+# install app dependencies
+COPY package.json package-lock.json ./
+
+RUN CI=true
+
+RUN npm install -s && npm install serve
+
+# add app
+COPY . ./
+
+RUN npm run build
+
+EXPOSE 3000
