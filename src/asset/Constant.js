@@ -1,1 +1,1 @@
-export default URL = 'http://keep-backend-service:4000/';
+export default URL = 'http://keepbackend.ravigooglekeep.tk/';
