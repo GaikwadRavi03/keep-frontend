@@ -7,7 +7,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                /home/ubuntu/myCommands/buildPush.sh
+                sh /home/ubuntu/myCommands/buildPush.sh
                 #rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-frontend-pipeline ubuntu@65.0.6.140:/home/ubuntu/
                 echo ===> Build stage
                 '''
