@@ -7,4 +7,4 @@ WORKDIR /app-f
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app-f/node_modules/.bin:$PATH
 
-ENTRYPOINT ["/bin/bash", "-c", "npm install; npm run build; exec \"${@:0}\";"]
+ENTRYPOINT ["/bin/bash", "-c", "npm install; npm run build; cd /app-f ; npx serve -s /app-f/build -l 3000; exec \"${@:0}\";"]
